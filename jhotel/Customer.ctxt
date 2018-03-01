@@ -1,13 +1,22 @@
 #BlueJ class context
 comment0.target=Customer
+comment0.text=\r\n\ Class\ Customer\ untuk\ menampilkan\ informasi\ customer.\r\n\r\n\ @author\ Derni\ Ageng\r\n\ @version\ 03/01/2018\r\n
 comment1.params=idNew\ namaBaru
 comment1.target=Customer(int,\ java.lang.String)
+comment1.text=\r\n\ constructor\ dari\ customer\ \r\n\ @param\ id,\ nama\ -\ nama\ baru\ dan\ id\ baru\ \r\n
 comment2.params=
 comment2.target=int\ getID()
+comment2.text=\r\n\ method\ untuk\ mendapatkan\ data\ ID\ \r\n\ @return\ id\ -\ mengembalikan\ nilai\ ID\ \r\n
 comment3.params=
 comment3.target=java.lang.String\ getNama()
+comment3.text=\r\n\ method\ untuk\ mendapatkan\ data\ nama\r\n\ @return\ nama\ -\ mendapatkan\ nilai\ nama\r\n
 comment4.params=idNew
 comment4.target=void\ setID(int)
+comment4.text=\r\n\ method\ untuk\ menginput\ ID\ baru\ \r\n\ @param\ idNew\ \r\n\ \r\n
 comment5.params=NamaBaru
 comment5.target=void\ setNama(java.lang.String)
-numComments=6
+comment5.text=\r\n\ method\ untuk\ menginput\ NamaBaru\r\n\ @param\ NamaBaru\ -\ nama\ baru\ \r\n
+comment6.params=
+comment6.target=void\ printData()
+comment6.text=\r\n\ method\ untuk\ mencetak\ data\r\n
+numComments=7
