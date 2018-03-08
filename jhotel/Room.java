@@ -15,7 +15,7 @@ public class Room
     private Customer customer;
     private double dailyTariff;
     private StatusKamar status_kamar;
-    Private Pesanan pesan;
+    private Pesanan pesan;
 
     /**
      * Constructor for objects of class Room
