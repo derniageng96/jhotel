@@ -64,6 +64,8 @@ public class Customer
      */
     public void printData()
     {
+        System.out.println(id);
+        System.out.println(nama);
         
     }
 }

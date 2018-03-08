@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Pesanan
 comment0.text=\r\n\ Pesanan\ digunakan\ untuk\ pengisian\ dan\ pengambilan\ data\ biaya,\ nama,\ statusdiproses,\ statusselesai.\r\n\r\n\ @author\ Derni\ Ageng\r\n\ @version\ 03/01/2018\r\n
-comment1.params=
-comment1.target=Pesanan()
+comment1.params=biaya\ pelanggan
+comment1.target=Pesanan(int,\ Customer)
 comment1.text=\r\n\ Constructor\ dari\ kelas\ Pesanan\r\n
 comment10.params=diproses
 comment10.target=void\ setStatusSelesai(boolean)
@@ -10,6 +10,8 @@ comment10.text=\r\n\ method\ untuk\ menginput\ StatusSelesai\r\n\ @param\ isSele
 comment11.params=
 comment11.target=void\ printData()
 comment11.text=\r\n\ method\ untuk\ melakukan\ pencetakkan\ data\r\n
+comment12.params=kamar
+comment12.target=void\ setRoom(Room)
 comment2.params=nama
 comment2.target=java.lang.String\ setNama(java.lang.String)
 comment2.text=\r\n\ method\ untuk\ melakukan\ input\ nama\r\n\ @return\ nama\r\n
@@ -34,4 +36,4 @@ comment8.text=\r\n\ method\ untuk\ menginput\ data\ pelanggan\ baru\ \r\n\ @para
 comment9.params=diproses
 comment9.target=void\ setStatusDiproses(boolean)
 comment9.text=\r\n\ method\ untuk\ menginput\ StatusDiproses\r\n\ @param\ isDiproses\ -\ sesuatu\ yang\ diproses\ pada\ pesanan\r\n
-numComments=12
+numComments=13

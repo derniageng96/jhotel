@@ -14,14 +14,15 @@ public class Pesanan
     private boolean isDiproses;
     private boolean isSelesai;
     private Customer pelanggan;
+    private Room kamar;
     
     /**
      * Constructor dari kelas Pesanan
      */
-    public Pesanan()
+    public Pesanan(int biaya, Customer pelanggan)
     {
-        double biaya; //biaya
-        Customer pelanggan ; //pelanggan, diambil dari class Customer
+        this.biaya = biaya; //biaya
+        this.pelanggan = pelanggan; //pelanggan, diambil dari class Customer
         
     }
     
@@ -118,7 +119,13 @@ public class Pesanan
      */
     public void printData()
     {
+        System.out.println(pelanggan);
+        System.out.println(biaya);
     
+    }
     
+    public void setRoom(Room kamar)
+    {
+        
     }
 }

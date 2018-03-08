@@ -20,7 +20,20 @@ public class JHotel
      */
     public static void main(String[] args) 
     {
-        // put your code here
+       Customer D = new Customer(12,"adsd");
+       //D.nama = "Derni";
+       //D.id = 12;
+       Lokasi C = new Lokasi(1,1,"Depok");
+       Hotel A = new Hotel("A",C,1);
+       Pesanan P = new Pesanan(1000000, D);
+       P.printData();
+       A.printData();
+       C.printData();
+       D.printData();
+       
+       D.setNama("ooo");
+       D.printData();
+    }
         
     }
-}
+

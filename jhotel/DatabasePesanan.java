@@ -10,6 +10,7 @@ public class DatabasePesanan
     // instance variables - replace the example below with your own
     private String[] list_pesanan;
     
+    
     /**
      * method untuk menambah pesanan baru 
      * @return false
@@ -35,8 +36,7 @@ public class DatabasePesanan
      */
     public Pesanan getPesanan(Customer cust)
     {
-        Pesanan pesan = new Pesanan();
-        return pesan;
+        return null;
     }
 
     /**
