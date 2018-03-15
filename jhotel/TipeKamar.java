@@ -7,7 +7,7 @@
  */
 public enum TipeKamar
 {
-    Tipe_1("Booked"), Tipe_2("Processed"), Tipe_3("Vacant") ;
+    Tipe_1("Single"), Tipe_2("Double"), Tipe_3("Premium") ;
     private String tipe;
     TipeKamar(String tipe){
         this.tipe=tipe;

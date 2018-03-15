@@ -41,12 +41,12 @@ public class Administrasi
     
     public static void pesananDibatalkan(Room kamar)
     {
-        Pesanan pesan1 = new Pesanan();
-        pesan1 = kamar.getPesanan();
-        pesan1.setStatusSelesai(false);
-        pesan1.setStatusDiproses(false);
-        pesan1.setRoom(null);
-        kamar.setPesanan(pesan1);
+        //Pesanan pesan1 = new Pesanan();
+        //pesan1 = kamar.getPesanan();
+        //pesan1.setStatusSelesai(false);
+        //pesan1.setStatusDiproses(false);
+        //pesan1.setRoom(null);
+        //kamar.setPesanan(pesan1);
         
         roomLepasPesanan(kamar);
     }
@@ -75,6 +75,7 @@ public class Administrasi
         pesan.setStatusDiproses(false);
         pesan.setRoom(null);
     }
+    
 }
 
 

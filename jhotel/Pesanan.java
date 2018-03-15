@@ -9,6 +9,7 @@ public class Pesanan
 {
     // instance variables pada class Pesanan
     private double biaya; 
+    private double jumlahHari;
     private String nama_pelanggan;
     private String jenis_kamar;
     private boolean isDiproses;
@@ -20,10 +21,22 @@ public class Pesanan
     /**
      * Constructor dari kelas Pesanan
      */
-    public Pesanan()
+    public Pesanan(double jumlahHari, Customer pelanggan, Room kamar)
     {
-        //this.biaya = biaya; //biaya
-        //this.pelanggan = pelanggan; //pelanggan, diambil dari class Customer
+        this.biaya=kamar.getDailyTariff()*jumlahHari;
+        this.jumlahHari=jumlahHari;
+        this.pelanggan=pelanggan;
+        this.kamar=kamar;
+    }
+    
+    public double getJumlahHari()
+    {
+        return jumlahHari;
+    }
+    
+    public void setJumlahHari(double jumlahHari)
+    {
+        this.jumlahHari=jumlahHari;
         
     }
     
@@ -45,6 +58,11 @@ public class Pesanan
     {
         return nama_pelanggan; 
     
+    }
+    public void setPelanggan(Customer pelanggan)
+    {
+        this.pelanggan=pelanggan;
+        
     }
     
     /**
@@ -86,20 +104,20 @@ public class Pesanan
      * method untuk menginput data biaya
      * @param biaya - harga pesanan
      */
-    public void setBiaya(double Biaya)
+    public void setBiaya()
     {
-        biaya = Biaya;
+        biaya = kamar.getDailyTariff()*jumlahHari;
         
     }
 
-    /**
-     * method untuk menginput data pelanggan baru 
-     * @param pelanggan - pemesan pesanan 
-     */
-    public void setPelanggan(Customer baru)
-    {
-        pelanggan = baru;
-    }
+    ///**
+    // * method untuk menginput data pelanggan baru 
+    // * @param pelanggan - pemesan pesanan 
+    // */
+    //public void setPelanggan(Customer baru)
+    //{
+    //    pelanggan = baru;
+    //}
 
     /**
      * method untuk menginput StatusDiproses
@@ -124,10 +142,11 @@ public class Pesanan
      */
     public void printData()
     {
-        System.out.println(pelanggan);
-        System.out.println(tipe_kamar);
-        System.out.println(isDiproses);
-        System.out.println(isSelesai);
+        System.out.println("Nama : " + pelanggan.getNama());
+        System.out.println("Jumlah Hari : " + jumlahHari);
+        System.out.println("Besar Biaya : " + biaya);
+        System.out.println("Status Diproses: " + isDiproses);
+        System.out.println("Status Selesai: " + isSelesai);
     }
     
     public void setRoom(Room kamar)
