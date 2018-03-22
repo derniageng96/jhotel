@@ -20,7 +20,7 @@ public class JHotel
      */
     public static void main(String[] args) 
     {
-       Customer D = new Customer(12,"inreD");
+       Customer D = new Customer(12,"inreD",10,10,2010);
        Lokasi C = new Lokasi(1,1,"Depok");
        Hotel A = new Hotel("A",C,1);
        Room test = new SingleRoom(A,"",true,StatusKamar.Status_1);

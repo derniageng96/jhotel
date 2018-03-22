@@ -148,6 +148,13 @@ public class Pesanan
         System.out.println("Status Diproses: " + isDiproses);
         System.out.println("Status Selesai: " + isSelesai);
     }
+     
+    public String toString()
+    {
+        String final_status = "KOSONG";
+        return final_status;
+        //return pelanggan.getNama()+ ""+jumlahHari+ ""+isDiproses+ ""+isSelesai;
+    }
     
     public void setRoom(Room kamar)
     {

@@ -80,6 +80,11 @@ public class Lokasi
         
     }
     
+    public String toString()
+    {
+        return x_coord+ ""+y_coord+ ""+deskripsiLokasi;
+    }
+    
     public void printData()
     {
         System.out.println("Koordinat x: " + x_coord);

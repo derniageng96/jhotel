@@ -80,6 +80,11 @@ public class Hotel
         this.bintang = bintang;
     }
     
+    public String toString()
+    {
+        return nama+ ""+bintang+ ""+lokasi.getDeskripsi();
+    }
+    
     /**
      * method untuk mencetak suatu data
      */
