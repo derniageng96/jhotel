@@ -4,6 +4,8 @@
  * @author Derni Ageng
  * @version 03/01/2018
  */
+import java.text.*;
+import java.util.*;
 import java.util.Date;
 import java.util.regex.*;
 public class Customer
@@ -14,7 +16,7 @@ public class Customer
     protected Date dob;
     protected String email;
     private Pattern pattern;
-	private Matcher matcher;
+    private Matcher matcher;
     /**
      * constructor dari customer 
      * @param id, nama - nama baru dan id baru 
@@ -23,37 +25,45 @@ public class Customer
     {
         id = idNew;
         nama = namaBaru;
-   
+        Date dob = new Date(tahun,bulan,tanggal);
         
         
     }
     
+    public Customer(int id, String nama, Date dob)
+    {
+        this.id=id;
+        this.nama=nama;
+        this.dob=dob;
+    }
+    
+    
     //public class EmailValidator {
 
-	//private Pattern pattern;
-	//private Matcher matcher;
+    //private Pattern pattern;
+    //private Matcher matcher;
 
-	//private static final String EMAIL_PATTERN = 
-	//	"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-	//	+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    //private static final String EMAIL_PATTERN = 
+    //  "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+    //  + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-	//public EmailValidator() {
-	//	pattern = Pattern.compile(EMAIL_PATTERN);
-	//}
+    //public EmailValidator() {
+    //  pattern = Pattern.compile(EMAIL_PATTERN);
+    //}
 
-	///**
-	// * Validate hex with regular expression
-	// * 
-	 //* @param hex
-	 /*            hex for validation
-	 * @return true valid hex, false invalid hex
-	 */
-	//public boolean validate(final String hex) {
+    ///**
+    // * Validate hex with regular expression
+    // * 
+     //* @param hex
+     /*            hex for validation
+     * @return true valid hex, false invalid hex
+     */
+    //public boolean validate(final String hex) {
 
-	//	matcher = pattern.matcher(hex);
-	//	return matcher.matches();
+    //  matcher = pattern.matcher(hex);
+    //  return matcher.matches();
 
-	//}
+    //}
     //}
     /**
      * method untuk mendapatkan data ID 
@@ -72,6 +82,9 @@ public class Customer
     
     public Date getDOB()
     {
+        DateFormat tanggal = new SimpleDateFormat("'DOB : ' dd MMMM YYYY");
+        String keluaran = tanggal.format(dob);
+        System.out.print(keluaran);
         return dob;
         
     }
@@ -109,19 +122,20 @@ public class Customer
     {
         email=email;
         String EMAIL_PATTERN = 
-		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	pattern = Pattern.compile(EMAIL_PATTERN);
-	
-	
-        
+        "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@+[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    pattern = Pattern.compile(EMAIL_PATTERN);
+    matcher = pattern.matcher(email);   
+        if (matcher.matches())
+        {
+            this.email=email;
+        }
     }
     
     //public boolean validate(final String hex) 
     //{
 
-	//matcher = pattern.matcher(hex);
-	//return matcher.matches();
+    //matcher = pattern.matcher(hex);
+    //return matcher.matches();
 
     //}
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
@@ -135,7 +149,7 @@ public class Customer
     
     public void setDOB(Date dob)
     {
-        dob=dob;
+        this.dob=dob;
         
         
     }

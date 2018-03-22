@@ -5,6 +5,10 @@
  * @author Derni Ageng
  * @version 03/01/2018
  */
+import java.text.*;
+import java.util.*;
+import java.util.Date;
+import java.util.regex.*;
 public class Pesanan
 {
     // instance variables pada class Pesanan
@@ -21,14 +25,23 @@ public class Pesanan
     /**
      * Constructor dari kelas Pesanan
      */
-    public Pesanan(double jumlahHari, Customer pelanggan, Room kamar)
+    
+    public Pesanan(double jumlahHari, Customer pelanggan, Room kamar, int tahun, int bulan, int hari)
     {
         this.biaya=kamar.getDailyTariff()*jumlahHari;
         this.jumlahHari=jumlahHari;
         this.pelanggan=pelanggan;
         this.kamar=kamar;
+        Date dob = new Date(tahun,bulan,hari);
     }
     
+    public Pesanan(double jumlahHari, Customer pelanggan, Room kamar)
+    {
+        this.jumlahHari=jumlahHari;
+        this.pelanggan=pelanggan;
+        this.kamar=kamar;
+        
+    }
     public double getJumlahHari()
     {
         return jumlahHari;
