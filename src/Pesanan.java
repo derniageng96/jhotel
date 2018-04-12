@@ -116,10 +116,10 @@ public class Pesanan
         
     }
     
-    //public Room getRoom()
-    //{
-        //return kamar;
-    //}
+    public Room getRoom()
+    {
+        return kamar;
+    }
     /**
      * method untuk menginput data biaya
      * @param - harga pesanan

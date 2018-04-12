@@ -46,12 +46,19 @@ public class DatabasePesanan
      * method untuk mendapatkan data pesanan
      * @param cust
      */
-    public static Pesanan getPesanan(Customer cust)
-    {
-        return null;
-    }
+
     public static Pesanan getPesanan(Room kamar)
     {
+        int ID = 0;
+        for(int i = 0;i<PESANAN_DATABASE.size();i++)
+        {
+            if(PESANAN_DATABASE.get(i).getRoom() == kamar)
+            {
+                return PESANAN_DATABASE.get(i);
+            }
+            else {
+                return null;
+            }
         return null;
     }
     public static Pesanan getPesananAktif(Customer pelanggan)
@@ -71,10 +78,7 @@ public class DatabasePesanan
      * method untuk membatakan pesanan 
      * @param pesan - pesanan 
      */
-    public void pesananDibatalkan(Pesanan pesan)
-    {
-    
-    }
+
     public static int getLastPesananID()
     {
         return LAST_PESANAN_ID;
@@ -92,7 +96,8 @@ public class DatabasePesanan
                 return null;
             }
 
-        }
 
+        }
+        return null;
     }
 }
