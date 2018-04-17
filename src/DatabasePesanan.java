@@ -7,97 +7,116 @@ import java.util.ArrayList;
  * @version 03/01/2018
  */
 
-public class DatabasePesanan
-{
+public class DatabasePesanan {
     // instance variables - replace the example below with your own
     private String[] list_pesanan;
-    private static ArrayList<Pesanan> PESANAN_DATABASE ;
-    private static int LAST_PESANAN_ID;
-    /**
-     * method untuk menambah pesanan baru 
-     * @return false
-     * 
-     */
-    public static boolean addPesanan(Pesanan baru)
-    {
-        boolean status = false;
+    private static ArrayList<Pesanan> PESANAN_DATABASE = new ArrayList<Pesanan>();
+    private static int LAST_PESANAN_ID = 0;
 
-        if(baru.getStatusAktif()){
-            System.out.print("Pesanan tidak dapat diproses");
-        }
-        else
-        {
-            PESANAN_DATABASE.add(baru);
-            status=true;
-        }
-        return status;
+    public static ArrayList<Pesanan> getPesananDatabase(){
+        return PESANAN_DATABASE;
     }
-    
-    /**
-     * method untuk menghapus data pesanan
-     * @return false
-     */
-    public static boolean removePesanan(Pesanan pesan)
-    {
-        return false;
-    }
-    
-    /**
-     * method untuk mendapatkan data pesanan
-     * @param cust
-     */
-
-    public static Pesanan getPesanan(Room kamar)
-    {
-        int ID = 0;
-        for(int i = 0;i<PESANAN_DATABASE.size();i++)
-        {
-            if(PESANAN_DATABASE.get(i).getRoom() == kamar)
-            {
-                return PESANAN_DATABASE.get(i);
-            }
-            else {
-                return null;
-            }
-        return null;
-    }
-    public static Pesanan getPesananAktif(Customer pelanggan)
-    {
-        return null;
-    }
-    /**
-     * method untuk mendapatkan data pesanan database 
-     * @return list_pesanan - list dari pesanan
-     */
-    public static String[] getPesananDatabase()
-    {
-        return null;
-    }
-    
-    /**
-     * method untuk membatakan pesanan 
-     * @param pesan - pesanan 
-     */
-
-    public static int getLastPesananID()
-    {
+    public static int getLastPesananId(){
         return LAST_PESANAN_ID;
     }
-    public Pesanan getPesanan(int id)
-    {
-        int ID = 0;
-        for(int i = 0;i<PESANAN_DATABASE.size();i++)
-        {
-            if(PESANAN_DATABASE.get(i).getID() == id)
-            {
-                return PESANAN_DATABASE.get(id);
-            }
-            else {
-                return null;
-            }
 
+    /**
+     * method untuk menambah pesanan baru
+     *
+     * @return false
+     */
+    public static boolean addPesanan(Pesanan baru) {
+        for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
+            Pesanan tes = PESANAN_DATABASE.get(i);
+            if (tes.getStatusAktif()==true&&tes.getID()==baru.getID()){
+                return false;
+            }
+        }
+        LAST_PESANAN_ID=baru.getID();
+        PESANAN_DATABASE.add(baru);
+        return true;
+    }
 
+    /**
+     * method untuk menghapus data pesanan
+     *
+     * @return false
+     */
+    public static boolean removePesanan(Pesanan pesan) {
+        for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
+            Pesanan tes = PESANAN_DATABASE.get(i);
+            if (tes.equals(pesan)){
+                if(tes.getRoom() != null)
+                {
+                    Administrasi.pesananDibatalkan(tes);
+                }
+                else
+                {
+                    if(tes.getStatusAktif())
+                    {
+                        tes.setStatusAktif(false);
+                    }
+                }
+
+                if(PESANAN_DATABASE.remove(tes))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * method untuk mendapatkan data pesanan
+     *
+     * @param
+     */
+
+    public static Pesanan getPesanan(Room kamar) {
+        for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
+            Pesanan tes = PESANAN_DATABASE.get(i);
+            if (tes.getRoom().equals(kamar)){
+                return tes;
+            }
         }
         return null;
+        }
+        public static Pesanan getPesananAktif (Customer pelanggan)
+        {
+            return null;
+        }
+        /**
+         * method untuk mendapatkan data pesanan database
+         * @return list_pesanan - list dari pesanan
+         */
+        //public static String[] getPesananDatabase ()
+        //{
+            //return null;
+        //}
+
+        /**
+         * method untuk membatakan pesanan
+         * @param - pesanan
+         */
+
+        public static int getLastPesananID ()
+        {
+            return LAST_PESANAN_ID;
+        }
+        public Pesanan getPesanan ( int id)
+        {
+            for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
+                Pesanan tes = PESANAN_DATABASE.get(i);
+                if (tes.getID()==id){
+                    return tes;
+                }
+            }
+            return null;
+        }
+        public static void pesananDibatalkan(Pesanan pesan)
+        {
+
+        }
     }
-}
+

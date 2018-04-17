@@ -198,10 +198,7 @@ public class Pesanan
     {
         
     }
-    public Room getRoom()
-    {
-        return kamar;
-    }
+
     public boolean getStatusAktif(){
         return isAktif;
     }
