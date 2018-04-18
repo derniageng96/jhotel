@@ -23,6 +23,8 @@ public abstract class Room
         this.nomor_kamar=nomor_kamar;
         //this.isAvailable=isAvailable;
         this.status_kamar=status_kamar;
+        this.dailyTariff=dailyTariff;
+        this.status_kamar=status_kamar;
         
     }
 

@@ -35,19 +35,19 @@ public class Administrasi
 
     public static void roomLepasPesanan(Room kamar)
     {
-        kamar.setStatusKamar(StatusKamar.Status_3);
-        kamar.setPesanan(null);
+        //kamar.setStatusKamar(StatusKamar.Status_3);
+        //kamar.setPesanan(null);
     }
     
     public static void pesananDibatalkan(Room kamar)
     {
-        Pesanan pesan1 = new Pesanan();
+        Pesanan pesan1 = DatabasePesanan.getPesanan(kamar);
         //pesan1 = kamar.getPesanan();
         //pesan1.setStatusSelesai(false);
         //pesan1.setStatusDiproses(false);
         //pesan1.setRoom(null);
         //kamar.setPesanan(pesan1);
-        pesan1.setStatusAktif(false);
+        //pesan1.setStatusAktif(false);
         
         roomLepasPesanan(kamar);
     }
@@ -71,12 +71,12 @@ public class Administrasi
 
     public static void pesananSelesai(Pesanan pesan)
     {
-        roomLepasPesanan(pesan.getRoom());
+        //roomLepasPesanan(pesan.getRoom());
         pesan.setStatusSelesai(true);
         pesan.setStatusDiproses(false);
         pesan.setRoom(null);
-        Pesanan pesan1 = new Pesanan();
-        pesan1.setStatusAktif(false);
+        //Pesanan pesan1 = new Pesanan();
+        //pesan1.setStatusAktif(false);
     }
     
 }

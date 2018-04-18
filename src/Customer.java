@@ -21,9 +21,8 @@ public class Customer
      * constructor dari customer 
      * @param id, nama - nama baru dan id baru 
      */
-    public Customer(int idNew, String namaBaru, int tanggal, int bulan, int tahun )
+    public Customer( String namaBaru, int tanggal, int bulan, int tahun )
     {
-        id = idNew;
         nama = namaBaru;
         Date dob = new Date(tahun,bulan,tanggal);
         

@@ -58,7 +58,7 @@ public class DatabaseHotel
                 ArrayList<Room> KAMAR_TEST = DatabaseRoom.getRoomsFromHotel(tes);
                 for (int x = 0; x < KAMAR_TEST.size(); x++){
                     Room kamar = KAMAR_TEST.get(x);
-                    DatabaseRoom.removeRoom(tes, kamar.getNomorKamar());
+                    DatabaseRoom.removeRoom(tes, kamar.getNomorkamar());
                 }
                 if(HOTEL_DATABASE.remove(tes))
                 {

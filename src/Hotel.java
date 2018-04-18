@@ -11,6 +11,7 @@ public class Hotel
     private String nama;
     private Lokasi lokasi;
     private int bintang;
+    private int id;
 
     /**
      * Constructor for objects of class Hotel
@@ -22,6 +23,10 @@ public class Hotel
         this.lokasi =lokasi;
         this.bintang = bintang;
         
+    }
+    public int getID()
+    {
+        return id;
     }
 
     /**

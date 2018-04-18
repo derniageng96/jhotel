@@ -16,7 +16,7 @@ public class DatabaseCustomer
      * @param baru
      * @return false
      */
-    public boolean addCustomer(Customer baru)
+    public static boolean addCustomer(Customer baru)
     {
         for (int i = 0; i < CUSTOMER_DATABASE.size(); i++) {
             Customer tes = CUSTOMER_DATABASE.get(i);
@@ -34,7 +34,7 @@ public class DatabaseCustomer
      * @param id 
      * @return false 
      */
-    public boolean removeCustomer(int id)
+    public static boolean removeCustomer(int id)
     {
         for (int i = 0; i < CUSTOMER_DATABASE.size(); i++) {
             Customer tes = CUSTOMER_DATABASE.get(i);
