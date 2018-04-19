@@ -5,8 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Room
-{
+public abstract class Room {
     // instance variables - replace the example below with your own
     private Hotel hotel;
     private String nomor_kamar;
@@ -17,96 +16,94 @@ public abstract class Room
     /**
      * Constructor for objects of class Room
      */
-    public Room(Hotel hotel, String nomor_kamar, StatusKamar status_kamar)
-    {
-        this.hotel=hotel; 
-        this.nomor_kamar=nomor_kamar;
+    public Room(Hotel hotel, String nomor_kamar) {
+        this.hotel = hotel;
+        this.nomor_kamar = nomor_kamar;
         //this.isAvailable=isAvailable;
-        this.status_kamar=status_kamar;
-        this.dailyTariff=dailyTariff;
-        this.status_kamar=status_kamar;
-        
+        //this.status_kamar=status_kamar;
+        this.dailyTariff = dailyTariff;
+        this.status_kamar = status_kamar;
+
     }
 
-    
-    public Hotel getHotel()
-    {
+
+    public Hotel getHotel() {
         // put your code here
         return hotel;
     }
-    
-    public String getNomorkamar()
-    {
+
+    public String getNomorkamar() {
         return nomor_kamar;
     }
-    
+
     //public boolean getStatusAvailable()
     //{
-        //return isAvailable;
+    //return isAvailable;
     //}
-    
-    public double getDailyTariff()
-    {
+
+    public double getDailyTariff() {
         return dailyTariff;
     }
-    
-    public StatusKamar getStatusKamar()
-    {
+
+    public StatusKamar getStatusKamar() {
         return status_kamar;
     }
-    
-    public Pesanan getPesanan()
-    {
+
+    public Pesanan getPesanan() {
         return pesan;
     }
-    
-    public void setHotel(Hotel hotel)
-    {
-        this.hotel=hotel;
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
-    
-    public void setNomorKamar(String nomor_kamar)
-    {
-        this.nomor_kamar=nomor_kamar;
+
+    public void setNomorKamar(String nomor_kamar) {
+        this.nomor_kamar = nomor_kamar;
     }
-    
+
     //public void setStatusAvailable(boolean isAvailable)
     //{
-        //this.isAvailable=isAvailable;
+    //this.isAvailable=isAvailable;
     //}
-    
-    public void setDailyTariff(double dailytariff)
-    {
+
+    public void setDailyTariff(double dailytariff) {
         this.dailyTariff = dailytariff;
     }
-    
-    public void setStatusKamar(StatusKamar status_kamar)
-    {
+
+    public void setStatusKamar(StatusKamar status_kamar) {
         this.status_kamar = status_kamar;
     }
-    
-    public void setPesanan(Pesanan pesan)
-    {
+
+    public void setPesanan(Pesanan pesan) {
         this.pesan = pesan;
     }
-    
+
     public abstract TipeKamar getTipeKamar();
- 
-    public void printData()
-    {
-        
+
+    public void printData() {
+
         System.out.println(hotel.getNama());
         System.out.println(nomor_kamar);
         //System.out.println(isAvailable);
         System.out.println(dailyTariff);
         System.out.println(status_kamar);
         //System.out.println(TipeKamar);
-        
-        
+
+
     }
-    public String toString()
-    {
-        return "";
+
+    public String toString() {
+        if (DatabasePesanan.getPesanan(this) == null) {
+            return "\nNama hotel  : " + getHotel().getNama() +
+                    "\nTipe kamar  : " + getTipeKamar() +
+                    "\nHarga       : " + getDailyTariff() +
+                    "\nStatus kamar: " + getStatusKamar();
+        } else {
+            return "\nNama hotel  : " + getHotel().getNama() +
+                    "\nTipe kamar  : " + getTipeKamar() +
+                    "\nHarga       : " + getDailyTariff() +
+                    "\nStatus kamar: " + getStatusKamar() +
+                    "\nPelanggan   : " + DatabasePesanan.getPesanan(this).getPelanggan().getNama();
+        }
     }
-        
 }

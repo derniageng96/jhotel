@@ -36,6 +36,7 @@ public class Pesanan
         //this.kamar=kamar;
         //Date dob = new Date(tahun,bulan,hari);
         isAktif=true;
+        id = DatabasePesanan.getLastPesananID()+1;
         tanggalPesan = new Date();
     }
     
@@ -46,6 +47,10 @@ public class Pesanan
        // this.kamar=kamar;
         
     //}
+    public Customer getPelanggan()
+    {
+        return pelanggan;
+    }
     public double getJumlahHari()
     {
         return jumlahHari;
@@ -181,9 +186,31 @@ public class Pesanan
     public String toString()
     {
         String final_status = "KOSONG";
-        return final_status;
-        //return pelanggan.getNama()+ ""+jumlahHari+ ""+isDiproses+ ""+isSelesai;
+        if(isDiproses == true && isSelesai == false) final_status = "DIPROSES";
+        else if(isDiproses == false && isSelesai == false) final_status = "KOSONG";
+        else if(isDiproses == false && isSelesai == true) final_status = "SELESAI";
+
+        if (getRoom() != null) {
+            return "\n Pesanan" +
+                    "\n pelanggan=" + pelanggan.getNama() +
+                    "\n jumlah hari =" + jumlahHari +
+                    "\n hotel=" + kamar.getHotel().getNama() +
+                    "\n kamar=" + kamar.getNomorkamar() +
+                    "\n tipeKamar=" + kamar.getTipeKamar() +
+                    "\n status=" + final_status+
+                    "\n ID= "+pelanggan.getID();
+
+        }
+        return "\n Pesanan" +
+                "\n pelanggan=" + pelanggan.getNama() +
+                "\n jumlah hari=" + jumlahHari +
+                "\n hotel=null" +//kamar.getHotel().getNama()+
+                "\n kamar=null" +//kamar.getNomorkamar() +
+                "\n tipeKamar=" +//kamar.getTipeKamar() +
+                "\n status=" + final_status+
+                "\n ID= "+pelanggan.getID();
     }
+
 
     public void setTanggalPesan(Date tanggalPesan)
     {
@@ -196,7 +223,7 @@ public class Pesanan
     }
     public void setRoom(Room kamar)
     {
-        
+        this.kamar=kamar;
     }
 
     public boolean getStatusAktif(){

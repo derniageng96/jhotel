@@ -25,7 +25,67 @@ public class JHotel
      */
     public static void main(String[] args) 
     {
-        Customer A = new Customer("Derni", 17, 4,2018);
+        DatabaseCustomer.addCustomer(new Customer("budi", new Date(2012,12,12)));
+        DatabaseCustomer.addCustomer(new Customer("abi", new Date(2000, 12, 5)));
+        DatabaseCustomer.addCustomer(new Customer("cece", new Date(2001, 10, 10)));
+        ArrayList<Customer>CUSTOMER_DATABASE = DatabaseCustomer.getCustomerDatabase();
+        System.out.print("Customer \n");
+        for(Customer c : CUSTOMER_DATABASE)
+        {
+
+            //String nama = tes.getNama();
+            //Date date = tes.getDOB();
+            System.out.println(c);
+        }
+        Lokasi test1 = new Lokasi(12,13,"Jakarta");
+        Lokasi test2 = new Lokasi(69,69,"Jakarta");
+        Lokasi test3 = new Lokasi(13,77,"Jakarta");
+        DatabaseHotel.addHotel(new Hotel("Ibis", test1, 12 ));
+        DatabaseHotel.addHotel(new Hotel("Hilton", test2, 13));
+        DatabaseHotel.addHotel(new Hotel("Aston", test3, 10));
+        ArrayList<Hotel>HOTEL_DATABASE = DatabaseHotel.getHotelDatabase();
+        System.out.print("Hotel \n");
+        for(int i=0; i<HOTEL_DATABASE.size(); i++)
+        {
+            Hotel tes1 = HOTEL_DATABASE.get(i);
+            //String nama = tes1.getNama();
+            //Lokasi lokasi = tes1.getLokasi();
+            //int bintang = tes1.getBintang();
+            System.out.println(tes1);
+        }
+        DatabaseRoom.addRoom(new SingleRoom(DatabaseHotel.getHotel(1), "A101"));
+        DatabaseRoom.addRoom(new DoubleRoom(DatabaseHotel.getHotel(2), "B202"));
+        DatabaseRoom.addRoom(new PremiumRoom(DatabaseHotel.getHotel(3), "C103"));
+        DatabaseRoom.addRoom(new PremiumRoom(DatabaseHotel.getHotel(1), "D404"));
+
+        for(Room ruangan: DatabaseRoom.getRoomDatabase()){
+            System.out.println(ruangan);
+        }
+        DatabasePesanan.addPesanan(new Pesanan(15,DatabaseCustomer.getCustomer(1)));
+        DatabasePesanan.addPesanan(new Pesanan(12,DatabaseCustomer.getCustomer(2)));
+        DatabasePesanan.addPesanan(new Pesanan(10,DatabaseCustomer.getCustomer(3)));
+        System.out.println("Pesanan");
+        for(Pesanan pesenan: DatabasePesanan.getPesananDatabase()){
+            System.out.println(pesenan);
+
+        }
+
+        Administrasi.pesananDitugaskan(DatabasePesanan.getPesananAktif(DatabaseCustomer.getCustomer(1)), DatabaseRoom.getRoom(DatabaseHotel.getHotel(1), "A101"));
+        Administrasi.pesananDitugaskan(DatabasePesanan.getPesananAktif(DatabaseCustomer.getCustomer(3)), DatabaseRoom.getRoom(DatabaseHotel.getHotel(2), "B202"));
+        Administrasi.pesananDitugaskan(DatabasePesanan.getPesananAktif(DatabaseCustomer.getCustomer(2)), DatabaseRoom.getRoom(DatabaseHotel.getHotel(3), "C103"));
+        System.out.println("Pesanan Ditugaskan");
+        for (Pesanan tugas: DatabasePesanan.getPesananDatabase()){
+            System.out.println(tugas);
+        }
+        Administrasi.pesananDibatalkan(DatabasePesanan.getPesananAktif(DatabaseCustomer.getCustomer(2)));
+        Administrasi.pesananSelesai(DatabasePesanan.getPesananAktif(DatabaseCustomer.getCustomer(1)));
+        Administrasi.pesananSelesai(DatabasePesanan.getPesananAktif(DatabaseCustomer.getCustomer(3)));
+        System.out.println("Pesanan Selesai");
+        for (Pesanan coba6 :DatabasePesanan.getPesananDatabase()){
+            System.out.println(coba6);
+        }
+
+        /*Customer A = new Customer("Derni", 17, 4,2018);
         DatabaseCustomer.addCustomer(A);
         Customer B = new Customer("Ageng", 16, 4,2018);
         DatabaseCustomer.addCustomer(B);
@@ -33,10 +93,10 @@ public class JHotel
         DatabaseCustomer.addCustomer(C);
         System.out.println("Data pada Database Customer");
         System.out.println(DatabaseCustomer.getCustomerDatabase());
-
-        Lokasi test1 = new Lokasi(12,13,"lok1");
-        Lokasi test2 = new Lokasi(69,69,"lok2");
-        Lokasi test3 = new Lokasi(13,77,"lok3");
+        SingleRoom Ibis A101
+        Double Room Hilton B202
+        Premium Room Aston C103
+        Premium Ibis D404
 
         Hotel D = new Hotel("KST", test1, 5);
         DatabaseHotel.addHotel(D);
@@ -106,7 +166,7 @@ public class JHotel
        //dobel.printData();
        Customer Derni = new Customer (1, "Derni", new GregorianCalendar(1997,06,23).getTime());
        System.out.println(Derni.getDOB());
-       
+       */
        
     }
         

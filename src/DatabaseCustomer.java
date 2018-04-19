@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class DatabaseCustomer
 {
     // instance variables - replace the example below with your own
-    private String[] list_customer;
+    //private String[] list_customer;
     private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
     private static int LAST_CUSTOMER_ID = 0;
     /**
@@ -16,12 +16,13 @@ public class DatabaseCustomer
      * @param baru
      * @return false
      */
-    public static boolean addCustomer(Customer baru)
+    public static boolean addCustomer(Customer baru) throws PelangganSudahAdaException
     {
         for (int i = 0; i < CUSTOMER_DATABASE.size(); i++) {
             Customer tes = CUSTOMER_DATABASE.get(i);
             if (tes.getID()==baru.getID()){
-                return false;
+                throw new PelangganSudahAdaException(tes);
+                //return false;
             }
         }
         LAST_CUSTOMER_ID=baru.getID();
@@ -34,30 +35,38 @@ public class DatabaseCustomer
      * @param id 
      * @return false 
      */
-    public static boolean removeCustomer(int id)
+    public static boolean removeCustomer(int id) throws PelangganTidakDitemukanException
     {
         for (int i = 0; i < CUSTOMER_DATABASE.size(); i++) {
             Customer tes = CUSTOMER_DATABASE.get(i);
             if (tes.getID()==id){
                 Pesanan pesan = DatabasePesanan.getPesananAktif(tes);
-                DatabasePesanan.removePesanan(pesan);
+                try {
+                    DatabasePesanan.removePesanan(tes);
+                } catch (PesananTidakDitemukanException test){
+                    System.out.println(test.getPesan());
+                }
                 if(CUSTOMER_DATABASE.remove(tes))
                 {
                     return true;
                 }
             }
         }
-        return false;
+        throw new PelangganTidakDitemukanException(id);
     }
-    
+
     /**
      * method untuk mendapatkan data customer database
      * @return list_customer - list dari customer
      */
-    //public String[] getCustomerDatabase()
-    //{
-       //return list_customer;
-    //}
+    public static ArrayList<Customer> getCustomerDatabase()
+    {
+       return CUSTOMER_DATABASE;
+    }
+    public int getLastCustomerId()
+    {
+        return LAST_CUSTOMER_ID;
+    }
     public static Customer getCustomer(int id)
     {
         for (int i = 0; i < CUSTOMER_DATABASE.size(); i++) {
@@ -68,8 +77,5 @@ public class DatabaseCustomer
         }
         return null;
     }
-    public static ArrayList<Customer> getCustomerDatabase()
-    {
-        return CUSTOMER_DATABASE;
-    }
+
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * class DatabasePesanan untuk menampilkan database pesanan.
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class DatabasePesanan {
     // instance variables - replace the example below with your own
-    private String[] list_pesanan;
+    //private String[] list_pesanan;
     private static ArrayList<Pesanan> PESANAN_DATABASE = new ArrayList<Pesanan>();
     private static int LAST_PESANAN_ID = 0;
 
@@ -25,12 +26,14 @@ public class DatabasePesanan {
      *
      * @return false
      */
-    public static boolean addPesanan(Pesanan baru) {
+    public static boolean addPesanan(Pesanan baru) throws PesananSudahAdaException {
         for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
             Pesanan tes = PESANAN_DATABASE.get(i);
             if (tes.getStatusAktif()==true&&tes.getID()==baru.getID()){
-                return false;
+                //return false;
+                throw new PesananSudahAdaException(tes);
             }
+
         }
         LAST_PESANAN_ID=baru.getID();
         PESANAN_DATABASE.add(baru);
@@ -42,7 +45,7 @@ public class DatabasePesanan {
      *
      * @return false
      */
-    public static boolean removePesanan(Pesanan pesan) {
+    public static boolean removePesanan(Pesanan pesan) throws PesananTidakDitemukanException {
         for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
             Pesanan tes = PESANAN_DATABASE.get(i);
             if (tes.equals(pesan)){
@@ -54,7 +57,9 @@ public class DatabasePesanan {
                 {
                     if(tes.getStatusAktif())
                     {
-                        tes.setStatusAktif(false);
+                        throw new PesananTidakDitemukanException(tes);
+
+                        //tes.setStatusAktif(false);
                     }
                 }
 
@@ -64,6 +69,7 @@ public class DatabasePesanan {
                 }
             }
         }
+        //throw new PesananTidakDitemukanException(tes);
         return false;
     }
 
@@ -82,18 +88,21 @@ public class DatabasePesanan {
         }
         return null;
         }
+
         public static Pesanan getPesananAktif (Customer pelanggan)
         {
+            for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
+                Pesanan tes = PESANAN_DATABASE.get(i);
+                if (tes.getStatusAktif()==true&&tes.getPelanggan().equals(pelanggan)){
+                    return tes;
+                }
+            }
             return null;
         }
         /**
          * method untuk mendapatkan data pesanan database
          * @return list_pesanan - list dari pesanan
          */
-        //public static String[] getPesananDatabase ()
-        //{
-            //return null;
-        //}
 
         /**
          * method untuk membatakan pesanan

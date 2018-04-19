@@ -21,12 +21,13 @@ public class DatabaseHotel
      * @param baru hotel baru
      *
      */
-    public static boolean addHotel(Hotel baru)
+    public static boolean addHotel(Hotel baru) throws HotelSudahAdaException
     {
         for (int i = 0; i < HOTEL_DATABASE.size(); i++) {
             Hotel tes = HOTEL_DATABASE.get(i);
             if (tes.getID()==baru.getID()){
-                return false;
+                throw new HotelSudahAdaException(tes);
+                //return false;
             }
         }
         LAST_HOTEL_ID=baru.getID();

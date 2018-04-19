@@ -21,19 +21,25 @@ public class Customer
      * constructor dari customer 
      * @param id, nama - nama baru dan id baru 
      */
-    public Customer( String namaBaru, int tanggal, int bulan, int tahun )
+    public Customer( String namaBaru, int tanggal, int bulan, int tahun, String email )
     {
         nama = namaBaru;
         Date dob = new Date(tahun,bulan,tanggal);
-        
+        DatabaseCustomer a = new DatabaseCustomer();
+        id = a.getLastCustomerId()+1;
+        this.email=email;
         
     }
     
-    public Customer(int id, String nama, Date dob)
+    public Customer(String nama, Date dob, String email)
     {
-        this.id=id;
+        //this.id=id;
         this.nama=nama;
         this.dob=dob;
+        DatabaseCustomer a = new DatabaseCustomer();
+        id = a.getLastCustomerId()+1;
+        this.email=email;
+
     }
     
     
@@ -155,7 +161,7 @@ public class Customer
     
     public String toString()
     {
-        return nama+ ""+email+ ""+id;
+        return "\nNama : "+nama+ "\nTanggal Lahir : "+dob;
     }
     
     /**
@@ -165,6 +171,5 @@ public class Customer
     {
         System.out.println("ID : " + id);
         System.out.println("Nama : " + nama);
-        
     }
 }
