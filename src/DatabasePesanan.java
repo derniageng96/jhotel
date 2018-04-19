@@ -45,6 +45,7 @@ public class DatabasePesanan {
      *
      * @return false
      */
+
     public static boolean removePesanan(Pesanan pesan) throws PesananTidakDitemukanException {
         for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
             Pesanan tes = PESANAN_DATABASE.get(i);
@@ -57,9 +58,9 @@ public class DatabasePesanan {
                 {
                     if(tes.getStatusAktif())
                     {
-                        throw new PesananTidakDitemukanException(tes);
+                        //throw new PesananTidakDitemukanException(tes);
 
-                        //tes.setStatusAktif(false);
+                        tes.setStatusAktif(false);
                     }
                 }
 
@@ -69,8 +70,8 @@ public class DatabasePesanan {
                 }
             }
         }
-        //throw new PesananTidakDitemukanException(tes);
-        return false;
+        throw new PesananTidakDitemukanException(pesan.getPelanggan());
+        //return false;
     }
 
     /**

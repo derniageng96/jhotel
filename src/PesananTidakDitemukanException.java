@@ -1,13 +1,13 @@
 public class PesananTidakDitemukanException extends Exception
 {
-    private Pesanan pesanan_error;
-    public PesananTidakDitemukanException(Pesanan pesanan_input)
+    private Customer pelanggan_error;
+    public PesananTidakDitemukanException(Customer pelanggan_input)
     {
         super("Pesanan yang dipesan oleh: ");
-        pesanan_error=pesanan_input;
+        pelanggan_error=pelanggan_input;
     }
     public String getPesan()
     {
-        return super.getMessage() + pesanan_error.getPelanggan().getNama() + " sudah melakukan pemesanan.";
+        return super.getMessage() + pelanggan_error.getNama() + " tidak ditemukan.";
     }
 }

@@ -20,12 +20,13 @@ public class DatabaseRoom
      * @param baru room baru
      *
      */
-    public static boolean addRoom(Room baru)
+    public static boolean addRoom(Room baru) throws RoomSudahAdaException
     {
         for (int i = 0; i < ROOM_DATABASE.size(); i++) {
             Room tes = ROOM_DATABASE.get(i);
             if (tes.getHotel().equals(baru.getHotel())&&tes.getNomorkamar().equals(baru.getNomorkamar())){
-                return false;
+                throw new RoomSudahAdaException(tes);
+                //return false;
             }
         }
         ROOM_DATABASE.add(baru);
@@ -115,7 +116,7 @@ public class DatabaseRoom
                 }
             }
         }
-        throw new RoomTidakDitemukanException(kamar);
+        throw new RoomTidakDitemukanException(hotel, nomor_kamar);
         //return false;
     }
 
